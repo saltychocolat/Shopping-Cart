@@ -1,0 +1,35 @@
+.wrapper{
+    width: 100%;
+    min-height: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: min-height 0.3s ease-out;
+    overflow: hidden;
+}
+.wrapper.open{
+    min-height: 200px;
+}
+
+.sectionHeader{
+    font-weight: bold;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sectionContent{
+    margin: 10px 5px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.img{
+    margin-left: auto;
+    height: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img.open{
+    transform: rotate(180deg);
+
+}

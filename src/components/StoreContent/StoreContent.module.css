@@ -1,0 +1,16 @@
+.wrapper{
+    width: 100%;
+}
+
+.header{
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.content{
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}

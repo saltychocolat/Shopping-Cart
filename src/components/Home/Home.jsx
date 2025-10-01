@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router"
 import { DisplayItem } from "../DisplayItem/DisplayItem";
 
 function Home(){
-    let fruits = useOutletContext();
+    let [fruits] = useOutletContext();
     return(
         <div className={styles.wrapper}>
             <div className={styles.title}>

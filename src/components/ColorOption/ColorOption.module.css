@@ -1,0 +1,25 @@
+.container{
+    padding: 10px 3px;
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: lighter;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out   ;
+    transition: transform 0.1s ease-in;
+}
+.container:hover{
+    background-color: #e5e5e5;
+}
+.container:active{
+    transform: scale(1.2);
+}
+.colorOrb{
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    margin-bottom: 3px;
+}
