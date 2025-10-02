@@ -5,25 +5,37 @@ import styles from "./App.module.css"
 import { useEffect, useState } from "react"
 
 function App() {
-  const [fruits,setFruits] = useState([]);
+  const [fruits,setFruits] = useState([
+  { name: "Apple", color: ["red", "green", "yellow"] }, 
+  { name: "Banana", color: ["yellow", "green", "brown"] }, 
+  { name: "Orange", color: ["orange", "green", "yellow"] }, 
+  { name: "Mango", color: ["green", "yellow", "red"] }, 
+  { name: "Pineapple", color: ["brown", "green", "yellow"] }, 
+  { name: "Strawberry", color: ["red", "green", "white"] }, 
+  { name: "Grapes", color: ["green", "red", "purple"] }
+]);
   const [filters,setFilters] = useState([])
+  const [search,setSearch] = useState([])
 
-  let resultFruits = fruits
-  useEffect(() =>{
-    const fetchFruits = () =>{
-      return fetch("https://www.fruityvice.com/api/fruit/all")
-      .then(response => {
-        if(!response.ok){
-          throw new Error("Erroare la fetch "+ response.status)
-        }
-        return response.json();
-      })
-      .catch((error)=>{
-        console.log("Error  " + error)
-      })
+  let resultFilters = filters.concat(search)
+
+  let resultFruits = [...fruits].filter(fruit => {
+    if (filters && filters.length > 0) {
+      return filters.every((c)=>fruit.color.includes(c));
+    } else {
+      return true;
     }
+  });
+
+  resultFruits = resultFruits.filter(fruit =>{
+    if(search.length)
+      return fruit.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    else
+      return true
+  })
+  useEffect(() =>{
     const fetchImages = async() =>{
-      let tempFruits = (await fetchFruits()).slice(0,5);
+      let tempFruits = [...fruits]
       const fruitsWithImages = await Promise.all(
         tempFruits.map(async item => {
           return fetch(
@@ -44,16 +56,36 @@ function App() {
     fetchImages()
   },[])
 
-  const handleSectionClick = (filter)=>{
+  const handleSectionClick = (filter)=>{  
     if(!filters.includes(filter)){
       setFilters((prev) =>[...prev,filter])
     }
   }
-    
+
+  const handleSearch = (input)=>{
+    if(input)
+      setSearch(input)
+    else
+      setSearch([])
+  }
+
+  const handleCancelFilter = (filter)=>{
+    if(filter ==search){
+      setSearch([])
+    }
+    else{
+      let tempFilters = [...filters] 
+      let index = tempFilters.indexOf(filter)
+      tempFilters.splice(index,1)
+      setFilters(tempFilters)
+    }
+  }
+  
+
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <Outlet context={[fruits,handleSectionClick,resultFruits,filters]}/>
+      <Header count={resultFruits.length} handleSearch={handleSearch}/>
+      <Outlet context={[fruits,handleSectionClick,resultFruits,resultFilters,handleCancelFilter]}/>
     </div>
   )
 }

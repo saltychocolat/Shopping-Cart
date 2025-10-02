@@ -1,7 +1,7 @@
 import styles from "./Header.module.css"
 import { useNavigate } from 'react-router';
 
-function Header({count = "0"}){
+function Header({count = "0",handleSearch}){
     const navigate = useNavigate();
     const handleNavigate = (dest) =>{
         navigate(dest)
@@ -12,7 +12,7 @@ function Header({count = "0"}){
             <div className={styles.link} onClick={()=> handleNavigate("/")}>Home</div>
             <div className={styles.link} onClick={()=> handleNavigate("/store")}>Store</div>
             <img className={styles.searchIcon} src="/searchIcon.png"></img>
-            <input type="text" className={styles.input}></input>
+            <input type="text" className={styles.input} onChange={(event)=>handleSearch(event.target.value)}></input>
             <div className={styles.count}>{count}</div>
             <img className={styles.cartIcon} src="/cartIcon.png" onClick={()=> handleNavigate("/cart")}></img>
         </div>

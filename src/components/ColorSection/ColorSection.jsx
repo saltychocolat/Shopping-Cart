@@ -17,8 +17,8 @@ function ColorSection(){
             </div>
             <div className={styles.sectionContent}>
             {
-                colorList.map((item) =>(
-                    <ColorOption item={item}/>
+                colorList.map((item,index) =>(
+                    <ColorOption item={item} key={index}/>
                 ))
             }
             </div>

@@ -1,17 +1,14 @@
-import { useOutletContext } from "react-router"
+
 import styles from "./StoreContent.module.css"
-import { StoreItem } from "../../StoreItem/StoreItem"
+import { StoreItem } from "../StoreItem/StoreItem"
 import { FilterHeader } from "../FilterHeader/FilterHeader"
 
-function StoreContent(){
-    const [,,resultFruits,filters] = useOutletContext()
+function StoreContent({resultFruits,resultFilters,handleCancelFilter}){
     return(
         <div className={styles.wrapper}>
             <div className={styles.header}>{`Items (${resultFruits.length})`}</div>
-            {filters ? (
-                <>
-                <FilterHeader filters={filters}/>
-                </>
+            {resultFilters ? (
+                <FilterHeader filters={resultFilters} handleCancelFilter={handleCancelFilter}/>
             ):(
                 <>
                 </>

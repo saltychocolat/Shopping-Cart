@@ -5,12 +5,12 @@
 .header{
     font-size: 10px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .content{
     display: grid;
-    
+    margin-top: 10px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
 }

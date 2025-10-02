@@ -1,0 +1,15 @@
+.filter{
+    display: flex;
+    background-color: #3895FF;
+    color: white;
+    font-size: 7px;
+    border-radius: 8px;
+    padding: 2px 6px;
+    min-width: 30px;
+    max-width: 100px;
+}
+
+.cancelIcon{
+    margin-left: auto;
+    height: 7px;
+}
