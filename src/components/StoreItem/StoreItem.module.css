@@ -38,6 +38,10 @@
 
 .bagIcon{
     margin-left: auto;
-    margin-right: 10px;
-    height: 12px;
+    height: 10px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.bagIcon:hover{
+    transform: scale(1.3);
 }

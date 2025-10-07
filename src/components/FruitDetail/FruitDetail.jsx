@@ -3,7 +3,7 @@ import styles from "./FruitDetail.module.css"
 import { useLocation, useNavigate, useOutletContext } from "react-router"
 
 function FruitDetail(){
-    const [fruits,handleSectionClick,resultFruits,resultFilters,handleCancelFilter,cart,handleAddCart,handleRemoveCart] = useOutletContext();
+    const [,,,,,cart,handleAddCart,handleRemoveCart] = useOutletContext();
     const [quantity,setQuantity] = useState(1)
 
     const navigate = useNavigate()
@@ -29,7 +29,7 @@ function FruitDetail(){
                     </div>
                     <div className={styles.infoBio}>{fruit.bio}</div>
                     <div className={styles.buyButton} onClick={()=>navigate("/cart")}>Buy Now</div>
-                    {cart.some(item=>item.fruit == fruit)?(
+                    {cart.some(item=>item.fruit.name == fruit.name)?(
                         <>
                             <div className={styles.addButton} onClick={()=>handleRemoveCart(fruit)}>
                                 <img className={styles.bagIcon} src="/bagIcon.png"></img>

@@ -120,7 +120,7 @@ function App() {
 
   const handleRemoveCart = (fruit)=>{
     let temp = [...cart]
-    temp = temp.filter(item => item.fruit !=fruit)
+    temp = temp.filter(item => item.fruit.name !=fruit.name)
     setCart(temp)
   }
 

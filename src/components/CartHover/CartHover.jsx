@@ -27,7 +27,7 @@ function CartHover({cart,toggle,handleRemoveCart}){
             <div className={styles.cartHoverFooter}>
                 <div className={styles.total}>Total</div>
                 <div className={styles.tax}>(Incl TVA)</div>
-                <div className={styles.cartHoverTotal}>{"$"+ (total*106/100).toFixed(1)}</div>
+                <div className={styles.cartHoverTotal}>{"$"+ (total*119/100).toFixed(1)}</div>
             </div>
             <div className={styles.checkoutButton} onClick={()=>alert("If this was a real page you would have been sent to the payment methods")}>Checkout</div>
             <div className={styles.bagButton} onClick={()=>navigate("/cart")}>
