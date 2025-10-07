@@ -28,7 +28,7 @@ function FruitDetail(){
                         <button className={styles.modifier} onClick={()=>setQuantity((prev)=>++prev)}>+</button>
                     </div>
                     <div className={styles.infoBio}>{fruit.bio}</div>
-                    <div className={styles.buyButton}>Buy Now</div>
+                    <div className={styles.buyButton} onClick={()=>navigate("/cart")}>Buy Now</div>
                     {cart.some(item=>item.fruit == fruit)?(
                         <>
                             <div className={styles.addButton} onClick={()=>handleRemoveCart(fruit)}>

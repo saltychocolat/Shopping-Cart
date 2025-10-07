@@ -87,7 +87,7 @@ function App() {
             `https://api.unsplash.com/search/photos/?client_id=Zek7vZbknlIViM4ijJSpc6wLaOZwK2e6cITYrYXdfA8&query=${item.name}&per_page=1`
           )
           .then(response => response.json())
-          .then(data => ({ ...item, url: data.results[0]?.urls?.small || null }))
+          .then(data => ({ ...item, url: data.results[0]?.urls?.regular || null }))
           .catch(error => {
             console.log("Unsplash fetch error:", error)
             return { ...item, url: null }
@@ -118,7 +118,7 @@ function App() {
     setCart((prev)=> [...prev,{fruit:fruit,quantity:quantity}])
   }
 
-  const handleRemoveCart =(fruit)=>{
+  const handleRemoveCart = (fruit)=>{
     let temp = [...cart]
     temp = temp.filter(item => item.fruit !=fruit)
     setCart(temp)
@@ -139,7 +139,7 @@ function App() {
 
   return (
     <div className={styles.wrapper}>
-      <Header count={cart.length ? cart.length:0} handleSearch={handleSearch}/>
+      <Header cart={cart} handleSearch={handleSearch} handleRemoveCart={handleRemoveCart}/>
       <Outlet context={[fruits,handleSectionClick,resultFruits,resultFilters,handleCancelFilter,cart,handleAddCart,handleRemoveCart]}/>
     </div>
   )

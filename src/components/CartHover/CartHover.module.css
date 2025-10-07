@@ -1,0 +1,89 @@
+
+.cartHover{
+    top: 30px;
+    right: 30px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    width: 150px;
+    height: fit-content;
+    background-color: white;
+    border: 1px solid #E5E5E5;
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 8px;
+    transition: opacity 0.1s ease-in-out;
+    gap: 10px;
+}
+
+.cartHoverTitle{
+    font-size: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 10px;
+}
+
+.cartHoverFooter{
+    padding-top: 10px;
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.total{
+    font-weight: bold;
+}
+.tax{
+    font-size: 6px;
+    color: #8f8f8f;
+}
+
+.cartHoverTotal{
+    font-size: 8px;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.cartHoverEmpty{
+    color: #686868;
+    padding: 3px;
+}
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.checkoutButton{
+    color: white;
+    background-color: #3895FF;
+}
+.checkoutButton:hover{
+    background-color: #2666DC;
+}
+.bagButton{
+    margin-top: -5px;
+    border: 1px solid #E5E5E5;
+}
+.bagButton:hover{
+    background-color:#E5E5E5 ;
+}
+.checkoutButton,
+.bagButton{
+    height: fit-content;
+    font-weight: bold;
+    font-size: 6px;
+    border-radius: 5px;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.bagIcon{
+    height: 6px;
+    width: 6px;
+}
