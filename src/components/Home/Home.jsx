@@ -10,7 +10,7 @@ function Home(){
     let [fruits] = useOutletContext();
     return(
         <div className={styles.wrapper}>
-            <div className={styles.title}>
+            <div className={styles.title} data-testid="home-title">
                 Welcome to store.
             </div>
             <p className={styles.p}>Discover our selection of fresh store, bursting with store and store. Delivered straight from the store to your store.</p>

@@ -11,13 +11,9 @@ const routes = [
         errorElement:<ErrorElement/>,
         children:[
             {index:true,element:<Home/>},
-            {path:"/store",element:<Store/>}
+            {path:"/store",element:<Store/>},
+            {path:'/store/:fruit',element:<FruitDetail/>}
         ]
-    },
-    {
-        path:`/store/:fruit`,
-        element:<FruitDetail/>,
-        errorElement:<ErrorElement/>
     }
 
 

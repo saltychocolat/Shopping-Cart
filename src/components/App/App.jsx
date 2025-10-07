@@ -4,16 +4,61 @@ import { Header } from "../Header/Header"
 import styles from "./App.module.css"
 import { useEffect, useState } from "react"
 
+
 function App() {
-  const [fruits,setFruits] = useState([
-  { name: "Apple", color: ["red", "green", "yellow"] }, 
-  { name: "Banana", color: ["yellow", "green", "brown"] }, 
-  { name: "Orange", color: ["orange", "green", "yellow"] }, 
-  { name: "Mango", color: ["green", "yellow", "red"] }, 
-  { name: "Pineapple", color: ["brown", "green", "yellow"] }, 
-  { name: "Strawberry", color: ["red", "green", "white"] }, 
-  { name: "Grapes", color: ["green", "red", "purple"] }
-]);
+  const [fruits, setFruits] = useState([
+    { 
+      name: "Apple", 
+      color: ["red", "green", "yellow"], 
+      price: 2.5, 
+      bio: "Mere crocante și zemoase, cultivate în livezi ecologice. Bogate în fibre, vitaminele A și C, susțin digestia și oferă o senzație de sațietate naturală. Perfecte pentru gustări rapide sau tarte aromate.",
+      family: "Pome"
+    }, 
+    { 
+      name: "Banana", 
+      color: ["yellow", "green", "brown"], 
+      price: 1.8, 
+      bio: "Banane coapte natural, sursă excelentă de potasiu și energie de durată. Ideale pentru micul dejun, smoothie-uri sau gustări sănătoase înainte de antrenament. Ajută la echilibrarea nivelului de zahăr din sânge.",
+      family: "Tropical"
+    }, 
+    { 
+      name: "Orange", 
+      color: ["orange", "green", "yellow"], 
+      price: 2.2, 
+      bio: "Portocale proaspete și aromate, pline de vitamina C și antioxidanți. Întăresc sistemul imunitar și oferă un gust dulce-acrișor revigorant. Recomandate pentru sucuri naturale sau deserturi ușoare.",
+      family: "Citrus"
+    }, 
+    { 
+      name: "Mango", 
+      color: ["green", "yellow", "red"], 
+      price: 3.4, 
+      bio: "Mango tropical, dulce și parfumat, considerat 'regele fructelor'. Bogat în vitaminele A, C și E, sprijină sănătatea pielii și a sistemului imunitar. Excelent în smoothie-uri, salate exotice sau deserturi fine.",
+      family: "Tropical"
+    }, 
+    { 
+      name: "Pineapple", 
+      color: ["brown", "green", "yellow"], 
+      price: 3.1, 
+      bio: "Ananas proaspăt, cu gust intens și echilibrat între dulce și acid. Conține bromelaină, o enzimă benefică pentru digestie și sistemul imunitar. Ideal pentru cocktailuri, prăjituri sau preparate asiatice.",
+      family: "Tropical"
+    }, 
+    { 
+      name: "Strawberry", 
+      color: ["red", "green", "white"], 
+      price: 2.9, 
+      bio: "Căpșuni parfumate și dulci, culese manual din culturi locale. O sursă excelentă de antioxidanți și vitamina C. Se potrivesc perfect cu frișcă, iaurt sau în deserturi de vară.",
+      family: "Berry"
+    }, 
+    { 
+      name: "Grapes", 
+      color: ["green", "red", "purple"], 
+      price: 2.7, 
+      bio: "Struguri zemoși și dulci, crescuți în podgorii însorite. Conțin polifenoli și resveratrol, compuși care contribuie la sănătatea inimii. Perfecți pentru gustări, sucuri naturale sau vinuri artizanale.",
+      family: "Berry"
+    }
+  ]);
+
+  const [cart,setCart] = useState([])
   const [filters,setFilters] = useState([])
   const [search,setSearch] = useState([])
 
@@ -69,6 +114,16 @@ function App() {
       setSearch([])
   }
 
+  const handleAddCart = (fruit,quantity)=>{
+    setCart((prev)=> [...prev,{fruit:fruit,quantity:quantity}])
+  }
+
+  const handleRemoveCart =(fruit)=>{
+    let temp = [...cart]
+    temp = temp.filter(item => item.fruit !=fruit)
+    setCart(temp)
+  }
+
   const handleCancelFilter = (filter)=>{
     if(filter ==search){
       setSearch([])
@@ -84,8 +139,8 @@ function App() {
 
   return (
     <div className={styles.wrapper}>
-      <Header count={resultFruits.length} handleSearch={handleSearch}/>
-      <Outlet context={[fruits,handleSectionClick,resultFruits,resultFilters,handleCancelFilter]}/>
+      <Header count={cart.length ? cart.length:0} handleSearch={handleSearch}/>
+      <Outlet context={[fruits,handleSectionClick,resultFruits,resultFilters,handleCancelFilter,cart,handleAddCart,handleRemoveCart]}/>
     </div>
   )
 }

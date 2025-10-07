@@ -1,0 +1,117 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+}
+
+.fruitDetailsContainer{
+    display: flex;
+}
+
+.fruitInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+
+.infoHeader{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.infoFamily{
+    font-size: 10px;
+    color: #5a5a5a;
+}
+
+.infoStock{
+    font-size: 8px;
+    color: #9CCAFF;
+}
+
+.infoPrice{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.infoQuantity{
+    display: flex;
+    gap:7px;
+    font-size: 8px;
+}
+
+.modifier{
+    font-size: 8px;
+    border-radius: 2px;
+    text-align: center;
+    height: 10px;
+    width: 10px;
+    border: 1px solid #e5e5e5;
+    transition: background-color 0.1s ease-in-out;
+}
+.modifier:hover{
+    cursor: pointer;
+    background-color: #e5e5e5;
+}
+
+.infoBio{
+    font-size: 9px;
+}
+
+.buyButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    color: white;
+    font-size: 6px;
+    height: 22px;
+    width: 150px;
+    background-color: #3895FF;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.buyButton:hover{
+    background-color: #186ed0;
+}
+.addButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    font-size: 6px;
+    border-radius: 5px;
+    width: 150px;
+    height: 22px;
+    font-weight: bold;
+}
+.addButton:hover{
+    background-color: #e5e5e5;
+}
+
+.addButton,
+.buyButton{
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+}
+.bagIcon{
+    height: 12px;
+}
+
+.img{
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.backIcon{
+    border-radius: 5px;
+    height: 15px;
+    padding: 3px;
+    transition: background-color 0.1s ease-in-out;
+}
+.backIcon:hover{
+    background-color: #e5e5e5;
+}
