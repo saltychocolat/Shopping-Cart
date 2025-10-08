@@ -3,6 +3,16 @@ import styles from "./FruitDetail.module.css"
 import { useLocation, useNavigate, useOutletContext } from "react-router"
 
 function FruitDetail(){
+    let pastel=
+    {
+    red: "rgb(255, 128, 128)",
+    green: "rgb(128, 192, 128)",
+    yellow: "rgb(255, 255, 128)",
+    brown: "rgb(210, 148, 148)",
+    orange: "#FFD0B4",
+    purple: "rgb(192, 128, 192)",
+    white: "rgb(255, 255, 255)"
+    }
     const [,,,,,cart,handleAddCart,handleRemoveCart] = useOutletContext();
     const [quantity,setQuantity] = useState(1)
 
@@ -44,6 +54,12 @@ function FruitDetail(){
                         </div>
                     )}
                 </div>
+            </div>
+            <div className={styles.fruitFooter}>
+                <div className={styles.footerColor} style={{backgroundColor:pastel[fruit.color[0]]}}>{fruit.color[0].charAt(0).toUpperCase()+fruit.color[0].slice(1)}</div>
+                {fruit.vitamins.map((item)=>
+                    <div className={styles.vitamins}>{item}</div>
+                )}
             </div>
         </div>
     )

@@ -8,7 +8,7 @@
     overflow: hidden;
 }
 .wrapper.open{
-    min-height: 150px;
+    min-height: 200px;
 }
 
 .sectionHeader{
@@ -19,9 +19,10 @@
 }
 
 .sectionContent{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     margin: 10px 0px 0px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
 }
 .img{
     margin-left: auto;

@@ -18,8 +18,21 @@
     transform: scale(1.2);
 }
 .colorOrb{
-    height: 15px;
-    width: 15px;
-    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
     margin-bottom: 3px;
+}
+
+
+.colorName{
+    font-size: 6px;
+}
+
+.checkIcon{
+    height: 8px;
+    width: 8px;
 }

@@ -3,12 +3,12 @@ import styles from "./StoreContent.module.css"
 import { StoreItem } from "../StoreItem/StoreItem"
 import { FilterHeader } from "../FilterHeader/FilterHeader"
 
-function StoreContent({resultFruits,resultFilters,handleCancelFilter}){
+function StoreContent({resultFruits,resultFilters,handleCancelFilter,search}){
     return(
         <div className={styles.wrapper}>
             <div className={styles.header}>{`Items (${resultFruits.length})`}</div>
             {resultFilters ? (
-                <FilterHeader filters={resultFilters} handleCancelFilter={handleCancelFilter}/>
+                <FilterHeader filters={resultFilters} handleCancelFilter={handleCancelFilter} search={search}/>
             ):(
                 <>
                 </>
@@ -19,7 +19,7 @@ function StoreContent({resultFruits,resultFilters,handleCancelFilter}){
                 <StoreItem key={index} item={item} />
                 ))
             ) : (
-                <div>No fruit match the current filters</div>
+                <div className={styles.noFilter}>No fruit match the current filters</div>
             )}
             </div>
         </div>
