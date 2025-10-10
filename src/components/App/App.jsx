@@ -13,7 +13,7 @@ function App() {
       price: 2.5, 
       bio: "Mere crocante și zemoase, cultivate în livezi ecologice. Bogate în fibre, vitaminele A și C, susțin digestia și oferă o senzație de sațietate naturală. Perfecte pentru gustări rapide sau tarte aromate.",
       family: "Pome",
-      vitamins: ["Vitamine A", "Vitamine C"]
+      vitamins: ["Vitamin A", "Vitamin C"]
     }, 
     { 
       name: "Strawberry", 
@@ -21,7 +21,7 @@ function App() {
       price: 2.9, 
       bio: "Căpșuni parfumate și dulci, culese manual din culturi locale. O sursă excelentă de antioxidanți și vitamina C. Se potrivesc perfect cu frișcă, iaurt sau în deserturi de vară.",
       family: "Berry",
-      vitamins: ["Vitamine C", "Vitamine B9"]
+      vitamins: ["Vitamin C", "Vitamin B9"]
     }, 
     { 
       name: "Orange", 
@@ -29,7 +29,7 @@ function App() {
       price: 2.2, 
       bio: "Portocale proaspete și aromate, pline de vitamina C și antioxidanți. Întăresc sistemul imunitar și oferă un gust dulce-acrișor revigorant. Recomandate pentru sucuri naturale sau deserturi ușoare.",
       family: "Citrus",
-      vitamins: ["Vitamine C", "Vitamine B1"]
+      vitamins: ["Vitamin C", "Vitamin B1"]
     }, 
     { 
       name: "Banana", 
@@ -37,7 +37,7 @@ function App() {
       price: 1.8, 
       bio: "Banane coapte natural, sursă excelentă de potasiu și energie de durată. Ideale pentru micul dejun, smoothie-uri sau gustări sănătoase înainte de antrenament. Ajută la echilibrarea nivelului de zahăr din sânge.",
       family: "Tropical",
-      vitamins: ["Vitamine B6", "Vitamine C"]
+      vitamins: ["Vitamin B6", "Vitamin C"]
     }, 
     { 
       name: "Mango", 
@@ -45,7 +45,7 @@ function App() {
       price: 3.4, 
       bio: "Mango tropical, dulce și parfumat, considerat 'regele fructelor'. Bogat în vitaminele A, C și E, sprijină sănătatea pielii și a sistemului imunitar. Excelent în smoothie-uri, salate exotice sau deserturi fine.",
       family: "Tropical",
-      vitamins: ["Vitamine A", "Vitamine C", "Vitamine E"]
+      vitamins: ["Vitamin A", "Vitamin C", "Vitamin E"]
     }, 
     { 
       name: "Pineapple", 
@@ -53,7 +53,7 @@ function App() {
       price: 3.1, 
       bio: "Ananas proaspăt, cu gust intens și echilibrat între dulce și acid. Conține bromelaină, o enzimă benefică pentru digestie și sistemul imunitar. Ideal pentru cocktailuri, prăjituri sau preparate asiatice.",
       family: "Tropical",
-      vitamins: ["Vitamine C", "Vitamine B1"]
+      vitamins: ["Vitamin C", "Vitamin B1"]
     }, 
     { 
       name: "Grapes", 
@@ -61,7 +61,7 @@ function App() {
       price: 2.7, 
       bio: "Struguri zemoși și dulci, crescuți în podgorii însorite. Conțin polifenoli și resveratrol, compuși care contribuie la sănătatea inimii. Perfecți pentru gustări, sucuri naturale sau vinuri artizanale.",
       family: "Berry",
-      vitamins: ["Vitamine C", "Vitamine K"]
+      vitamins: ["Vitamin C", "Vitamin K"]
     }
   ]);
 
@@ -126,9 +126,18 @@ function App() {
       setSearch([])
   }
 
-  const handleAddCart = (fruit,quantity)=>{
-    setCart((prev)=> [...prev,{fruit:fruit,quantity:quantity}])
-  }
+  const handleAddCart = (fruit, quantity) => {
+    setCart(prev => {
+      const index = prev.findIndex(item => item.fruit.name === fruit.name);
+
+      if (index !== -1) {
+        const updated = [...prev];
+        updated[index] = { ...updated[index], quantity };
+        return updated;
+      }
+      return [...prev, { fruit, quantity }];
+    });
+  };
 
   const handleRemoveCart = (fruit)=>{
     let temp = [...cart]

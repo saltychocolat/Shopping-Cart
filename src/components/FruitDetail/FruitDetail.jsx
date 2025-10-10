@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./FruitDetail.module.css"
 import { useLocation, useNavigate, useOutletContext } from "react-router"
 
@@ -14,11 +14,33 @@ function FruitDetail(){
     white: "rgb(255, 255, 255)"
     }
     const [,,,,,cart,handleAddCart,handleRemoveCart] = useOutletContext();
-    const [quantity,setQuantity] = useState(1)
+    
+
 
     const navigate = useNavigate()
     const location = useLocation();
     const fruit = location.state
+
+    let found = cart.find(item => item.fruit.name === fruit.name)?.quantity;
+
+    const [quantity,setQuantity] = useState(found?found:1 )
+
+    const handleMod = (mod)=>{
+        let newQ = quantity ;
+        if(mod){
+            newQ = newQ - 1 <0 ? newQ : newQ-1;
+        }
+        else
+            newQ++;
+        if(found){
+            handleAddCart(fruit,newQ)
+        }
+        setQuantity(newQ);
+    }
+    const handleBuyNow = ()=>{
+        handleAddCart(fruit,quantity)
+        navigate("/cart")
+    }
     return(
         <div className={styles.wrapper}>
             <div >
@@ -33,12 +55,12 @@ function FruitDetail(){
                     <div className={styles.infoStock}>In Stock</div>
                     <div className={styles.infoPrice}>{"$"+fruit.price * quantity}</div>
                     <div className={styles.infoQuantity}>
-                        <button className={styles.modifier} onClick={() => setQuantity(prev => (prev > 1 ? prev - 1 : prev))}>-</button>
+                        <button className={styles.modifier} onClick={() => {handleMod(true)}}>-</button>
                         <div>{quantity}</div>
-                        <button className={styles.modifier} onClick={()=>setQuantity((prev)=>++prev)}>+</button>
+                        <button className={styles.modifier} onClick={()=>handleMod(false)}>+</button>
                     </div>
                     <div className={styles.infoBio}>{fruit.bio}</div>
-                    <div className={styles.buyButton} onClick={()=>navigate("/cart")}>Buy Now</div>
+                    <div className={styles.buyButton} onClick={()=>handleBuyNow()}>Buy Now</div>
                     {cart.some(item=>item.fruit.name == fruit.name)?(
                         <>
                             <div className={styles.addButton} onClick={()=>handleRemoveCart(fruit)}>
@@ -57,8 +79,8 @@ function FruitDetail(){
             </div>
             <div className={styles.fruitFooter}>
                 <div className={styles.footerColor} style={{backgroundColor:pastel[fruit.color[0]]}}>{fruit.color[0].charAt(0).toUpperCase()+fruit.color[0].slice(1)}</div>
-                {fruit.vitamins.map((item)=>
-                    <div className={styles.vitamins}>{item}</div>
+                {fruit.vitamins.map((item,index)=>
+                    <div className={styles.vitamins} key={index}>{item}</div>
                 )}
             </div>
         </div>

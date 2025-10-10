@@ -66,7 +66,10 @@
 .cartIcon{
     height: 17px;
     align-self: center;
+    cursor: pointer;
     margin-left: -22px;
 }
+
+
 
 

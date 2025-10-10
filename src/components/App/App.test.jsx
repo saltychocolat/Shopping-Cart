@@ -51,6 +51,22 @@ describe("App Component",()=>{
         expect(items).toHaveLength(4)
 
     })
+    it("family filter",async()=>{
+        const router = createMemoryRouter(routes,{initialEntries:["/store"]})
+        const user = userEvent.setup();
+
+        render(
+            <RouterProvider router={router}></RouterProvider>
+        )
+        const pomeBtn = await screen.findAllByTestId("family-option");
+
+        await user.click(pomeBtn[0]);
+
+        const items = await screen.findAllByTestId("store-item")
+        
+
+        expect(items).toHaveLength(1);
+    })
     it("search filter",async()=>{
         const router = createMemoryRouter(routes,{initialEntries:["/store"]})
         const user = userEvent.setup();
@@ -65,5 +81,6 @@ describe("App Component",()=>{
         const items = await screen.findAllByTestId("store-item")
 
         expect(items).toHaveLength(2)
+
     })
 })

@@ -18,7 +18,7 @@ function FamilyOption({item}){
         setCheck((prev)=>!prev)
     }
     return(
-        <div className={styles.container} onClick={()=>handleClick(item)}>
+        <div className={styles.container} onClick={()=>handleClick(item)} data-testid="family-option">
             <div className={check && current?styles.checkBox +" "+ styles.checked : styles.checkBox} >
                 {check && current?(
                     <img src="/checkIcon.png" className={styles.checkIcon}/>

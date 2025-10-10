@@ -1,0 +1,89 @@
+.item{
+    display: flex;
+    align-items: center;
+}
+
+.img{
+    height: 70px;
+    width: 70px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.fruitInfo{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    font-size: 7px;
+}
+
+.name{
+    font-weight: bold;
+}
+
+.family{
+    font-size: 6px;
+}
+
+.stock{
+    color:#51A2FF;
+}
+
+.quantity{
+    color: #848484;
+    font-size: 6px;
+}
+
+
+.modifier{
+    font-size: 8px;
+    border-radius: 2px;
+    text-align: center;
+    height: 10px;
+    width: 10px;
+    border: 1px solid #e5e5e5;
+    background-color: white;
+    transition: background-color 0.1s ease-in-out;
+}
+.modifier:hover{
+    cursor: pointer;
+    background-color: #e5e5e5;
+}
+.infoQuantity{
+    margin-left: 50px;
+    display: flex;
+    gap:7px;
+    font-size: 8px;
+}
+
+
+.trashButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    padding: 1px;
+    border: 1px solid #e5e5e5;
+    background-color: white;
+    height: 7px;
+    width: 7px;
+    transition: background-color 0.1s ease-in-out;
+    border-radius: 2px;
+}
+.trashButton:hover{
+    cursor: pointer;
+    background-color: #e5e5e5;
+}
+
+.trashIcon{
+    height: 6px;
+}
+
+
+.price{
+    margin-left: 20px;
+    font-size: 8px;
+    font-weight: bold;
+}
